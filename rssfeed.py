@@ -25,5 +25,10 @@ def cambridge_feed():
     xml = fg.rss_str(pretty=True)
     return Response(xml, mimetype="application/rss+xml")
 
+import os
+
 if __name__ == "__main__":
-    app.run(port=5000)
+    port = int(os.environ.get("PORT", 5000))  # use Render's port or default to 5000
+    app.run(host="0.0.0.0", port=port)
+
+
